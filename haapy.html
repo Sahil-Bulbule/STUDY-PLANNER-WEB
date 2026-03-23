@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="happy.css">
+  <script src="happy.js"></script>
+  <title>Focus Flow · Smart Study Planner</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="toggle-btn" id="toggleSidebar">◀</button>
+    </div>
+    <div class="nav-items">
+      <button class="nav-item active" data-target="home"><span class="nav-icon">1.</span><span class="nav-text">HOME</span></button>
+      <button class="nav-item" data-target="about"><span class="nav-icon">2.</span><span class="nav-text">ABOUT</span></button>
+      <button class="nav-item" data-target="streak"><span class="nav-icon">3.</span><span class="nav-text">STREAK</span></button>
+      <button class="nav-item" data-target="timetablegen"><span class="nav-icon">4.</span><span class="nav-text">TIMETABLE</span></button>
+      <button class="nav-item" data-target="tasks"><span class="nav-icon">5.</span><span class="nav-text">TASKS</span></button>
+      <button class="nav-item" data-target="progress"><span class="nav-icon">6.</span><span class="nav-text">PROGRESS</span></button>
+      <button class="nav-item" data-target="motivation"><span class="nav-icon">7.</span><span class="nav-text">MOTIVATION</span></button>
+      <button class="nav-item" data-target="notes"><span class="nav-icon">8.</span><span class="nav-text">NOTES</span></button>
+      <button class="nav-item" data-target="feedback"><span class="nav-icon">9.</span><span class="nav-text">FEEDBACK</span></button>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <section id="home" class="section">
+      <div class="section-card">
+      <img style="float: right; width: 50px; height: 50px; margin-bottom: 90px; border: 3px solid purple; border-radius: 50px;" src="data:image/png;base64,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" />
+      <h1 style="color: purple;"> FOCUS <span style="color: violet;"> FLOW </span></h1> 
+      </div>
+    </section>
+
+    <section id="home" class="section">
+      <div class="section-card">
+        <img style="float: right; width: 350px; height: 200px; border: 3px solid purple; border-radius: 50px; box-shadow: 0px 10px 10px violet;" src="img/p1.png" alt="img" />
+        <h2 class="animated-underline">HOME</h2>
+        <div style="width: 600px;" class="theory-text"><p><strong>✨ Welcome to FocusFlow</strong> — your intelligent study companion. Plan your day with precision: set start time, break duration, and total study hours. Stay motivated, track progress, and never lose your streak. Flow with focus!</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">ABOUT</h2>
+        <div class="theory-text"><p><strong>FocusFlow</strong> helps you create dynamic study timetables based on your subjects, preferred start time (AM/PM), total duration, and custom break length. Built with love for students who want structure without complexity.</p></div>
+      </div>
+    </section>
+
+    <section id="streak" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">STREAK</h2>
+        <div class="theory-text"><p><strong>🔥 Never break the chain:</strong> Mark yourself present each day to build your streak. A consistent study habit leads to massive results. Reset only if needed!</p></div>
+        <div class="center-content">
+          <span class="streak-box" id="streakDisplay">0 DAYS</span>
+          <div class="flex-btns" style="margin-top:20px;">
+            <button class="primary-btn" id="presentBtn" style="background:#f3e7c8;">✅ I'M PRESENT</button>
+            <button class="primary-btn" id="deleteStreakBtn" style="background:#ffe2e2;">🗑️ DELETE STREAK</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timetablegen" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">SMART TIMETABLE MAKER</h2>
+        <div class="theory-text"><p><strong>How it works:</strong> Add your subjects below, set your preferred <strong>start time (AM/PM)</strong>, total study duration, and <strong>custom break length</strong>. We'll generate a perfectly balanced timetable with your breaks between subjects — all in real-time!</p></div>
+        <div class="grid-2">
+          <div class="center-content">
+            <div class="subjects-wrapper">
+              <label style="font-weight:700; margin-bottom:8px; display:block; text-align:center;">📋 YOUR SUBJECTS</label>
+              <div id="subjectContainer" class="subject-container"></div>
+              <button class="add-btn" id="addSubjectBtn">+ ADD SUBJECT</button>
+            </div>
+
+            <div class="input-group">
+              <label>⏰ START TIME</label>
+              <div class="double-input">
+                <input type="number" id="startHour" value="9" min="1" max="12" step="1" class="time-input" placeholder="HOUR">
+                <div class="ampm-group">
+                  <button type="button" id="ampmAM" class="ampm-btn active">AM</button>
+                  <button type="button" id="ampmPM" class="ampm-btn">PM</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="double-input" style="gap:15px; margin-bottom:15px;">
+              <div class="input-group" style="margin:0;">
+                <br>
+                <label style="margin-left: 10px;">📚 HOURS</label>
+                <input type="number" id="studyHours" value="2" min="0" max="12" step="1" class="time-input" placeholder="HRS">
+              </div>
+              <div class="input-group" style="margin:0;">
+                <br>
+                <label style="margin-left: 10px;">⏱️ MINUTES</label>
+                <input type="number" id="studyMinutes" value="30" min="0" max="59" step="5" class="time-input" placeholder="MIN">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>☕ BREAK DURATION (per break)</label>
+              <input type="number" id="breakMinutes" value="5" min="1" max="30" step="1" class="time-input" placeholder="MINUTES PER BREAK">
+            </div>
+
+            <button class="big-btn" id="generateTimetableBtn">GENERATE TIMETABLE</button>
+          </div>
+          
+          <div class="output-panel" id="timetableOutput">
+            <h3 style="margin-bottom:15px; text-align:center;">YOUR CUSTOM PLAN</h3>
+            <div id="planSlots"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tasks" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">TASKS</h2>
+        <div class="theory-text"><p><strong>Stay organized:</strong> Add your daily study tasks, mark them as completed, and track what's done. Clear completed tasks to keep your list fresh. Every completed task fuels your progress!</p></div>
+        <div class="center-content">
+          <div class="input-group" style="max-width:450px;">
+            <input id="taskInput" placeholder="WRITE A NEW TASK..." class="time-input" style="text-align:center;">
+          </div>
+          <button class="primary-btn" id="addTaskBtn" style="margin-top:5px;">+ ADD TASK</button>
+          <br>
+          <ul id="taskList" style="list-style:none; width:100%; margin-top:20px;"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">PROGRESS</h2>
+        <div class="theory-text"><p><strong>Track your achievements:</strong> See how many tasks you've completed. The progress bar fills up as you check off items — a visual reminder of your consistency!</p></div>
+        <div class="center-content">
+          <div style="font-size:3rem; font-weight:700;" id="progressPercent">0%</div>
+          <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+          <p style="font-size:1.2rem;"><span id="completedCount">0</span> / <span id="totalCount">0</span> TASKS DONE</p>
+          <br>
+          <button class="primary-btn" id="clearDone">🗑️ CLEAR COMPLETED</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="motivation" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">MOTIVATION</h2>
+        <div class="theory-text"><p><strong>Fuel your mind:</strong> A little inspiration goes a long way. Read powerful quotes to keep your momentum high. Click the button to refresh your motivation anytime.</p></div>
+        <div class="center-content">
+          <div id="quoteBox" style="font-size:1.8rem; font-weight:600; padding:20px; background:#f3ecfe; border-radius:60px; margin-bottom:20px; text-align:center; max-width:500px;">“JUST START”</div>
+          <button class="primary-btn" id="newQuote">NEW QUOTE</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">NOTES</h2>
+        <div class="theory-text"><p><strong>Jot down ideas:</strong> Quick notes, reminders, or study tips — keep everything in one place. Your notes are saved automatically.</p></div>
+        <div class="center-content">
+          <div class="input-group" style="max-width:500px;">
+            <textarea id="noteInput" rows="3" placeholder="WRITE YOUR NOTE HERE..." class="time-input" style="border-radius:24px; resize:none;"></textarea>
+          </div>
+          <button class="primary-btn" id="saveNoteBtn">SAVE NOTE</button>
+          <div id="notesList" style="width:100%; margin-top:20px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="section">
+      <div class="section-card">
+        <h2 class="animated-underline">FEEDBACK</h2>
+        <div class="theory-text"><p><strong>Help us improve!</strong> Your feedback makes FocusFlow better. Share what you love, what we can improve, or new features you'd like to see.</p></div>
+        <div class="center-content">
+          <div class="feedback-grid">
+            <input type="text" id="fbName" placeholder="YOUR NAME" class="time-input" style="width:100%;">
+            <input type="email" id="fbEmail" placeholder="EMAIL (optional)" class="time-input" style="width:100%;">
+            <textarea id="fbMsg" rows="3" placeholder="YOUR FEEDBACK / SUGGESTIONS..." class="time-input" style="border-radius:24px;"></textarea>
+            <button class="primary-btn" id="fbSend" style="width:fit-content; margin:0 auto;">📨 SEND FEEDBACK</button>
+            <p id="fbThanks" style="text-align:center; color:#5e3a9e;"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="animated-underline" style="margin-left: 400px; color: red;">FOCUSFLOW :- FLOW WITH LEARNING</footer>
+  </div>
+</div>
+
+<script>
+     (function() {
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleSidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      toggleBtn.innerHTML = sidebar.classList.contains('collapsed') ? '▶' : '◀';
+    });
+
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    let streak = JSON.parse(localStorage.getItem('streak')) || 0;
+    let lastPresent = localStorage.getItem('lastPresent') || '';
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+    
+    function saveTasks() { localStorage.setItem('tasks', JSON.stringify(tasks)); }
+    function saveNotes() { localStorage.setItem('notes', JSON.stringify(notes)); }
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m === '&') return '&amp;'; if(m === '<') return '&lt;'; if(m === '>') return '&gt;'; return m;}); }
+
+    function renderTasks() {
+      const list = document.getElementById('taskList');
+      if(!list) return;
+      let html = '';
+      tasks.forEach((t,i) => {
+        html += `<li class="task-item" style="display:flex; align-items:center; gap:10px; justify-content:space-between;">
+          <span style="flex:1; ${t.completed ? 'text-decoration:line-through;color:gray;' : ''}">${escapeHtml(t.text)}</span>
+          <div><button class="complete-task" data-index="${i}" style="background:#e2f0e2; border:none; border-radius:50%; width:38px; height:38px; cursor:pointer;">✔</button>
+          <button class="delete-task" data-index="${i}" style="background:#ffe6ec; border:none; border-radius:50%; width:38px; height:38px; cursor:pointer;">✖</button></div>
+        </li>`;
+      });
+      list.innerHTML = html;
+    }
+    function updateProgress() {
+      const total = tasks.length;
+      const done = tasks.filter(t => t.completed).length;
+      const p = total === 0 ? 0 : Math.round((done/total)*100);
+      document.getElementById('progressPercent').innerText = p+'%';
+      document.getElementById('progressFill').style.width = p+'%';
+      document.getElementById('completedCount').innerText = done;
+      document.getElementById('totalCount').innerText = total;
+    }
+    function fullTaskRender() { renderTasks(); updateProgress(); saveTasks(); }
+    
+    document.getElementById('addTaskBtn')?.addEventListener('click', ()=>{
+      const inp = document.getElementById('taskInput');
+      if(!inp.value.trim()) return;
+      tasks.push({text: inp.value.trim(), completed: false});
+      inp.value = ''; fullTaskRender();
+    });
+    document.getElementById('taskList')?.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button');
+      if(!btn) return;
+      const idx = btn.getAttribute('data-index');
+      if(idx === null) return;
+      if(btn.classList.contains('complete-task')) { tasks[idx].completed = !tasks[idx].completed; fullTaskRender(); }
+      else if(btn.classList.contains('delete-task')) { tasks.splice(idx,1); fullTaskRender(); }
+    });
+    document.getElementById('clearDone')?.addEventListener('click', ()=>{ tasks = tasks.filter(t => !t.completed); fullTaskRender(); });
+
+    function updateStreakUI() { document.getElementById('streakDisplay').innerText = streak + (streak===1?' DAY':' DAYS'); }
+    document.getElementById('presentBtn')?.addEventListener('click', ()=>{
+      const today = new Date().toDateString();
+      if(lastPresent === today) { alert('✅ ALREADY MARKED PRESENT TODAY!'); return; }
+      const yesterday = new Date(Date.now()-86400000).toDateString();
+      streak = (lastPresent === yesterday) ? streak+1 : 1;
+      lastPresent = today;
+      localStorage.setItem('streak', JSON.stringify(streak));
+      localStorage.setItem('lastPresent', lastPresent);
+      updateStreakUI();
+    });
+    document.getElementById('deleteStreakBtn')?.addEventListener('click', ()=>{
+      if(confirm('⚠️ RESET STREAK TO ZERO?')) { streak = 0; lastPresent = ''; localStorage.setItem('streak', JSON.stringify(streak)); localStorage.setItem('lastPresent', lastPresent); updateStreakUI(); }
+    });
+
+    function renderNotes() {
+      let html = '';
+      notes.forEach((n,i) => { html += `<div style="background:white; border-radius:40px; padding:12px 20px; margin:8px 0; display:flex; justify-content:space-between; align-items:center;"><span>📌 ${escapeHtml(n)}</span><button class="delNote" data-idx="${i}" style="background:#ffe2ec; border:none; border-radius:50%; width:32px; height:32px; cursor:pointer;">🗑️</button></div>`; });
+      document.getElementById('notesList').innerHTML = html;
+      document.querySelectorAll('.delNote').forEach(b => b.addEventListener('click', function(){ const idx = this.getAttribute('data-idx'); if(idx !== null){ notes.splice(idx,1); saveNotes(); renderNotes(); } }));
+    }
+    document.getElementById('saveNoteBtn')?.addEventListener('click', ()=>{ const txt = document.getElementById('noteInput').value.trim(); if(txt){ notes.push(txt); saveNotes(); document.getElementById('noteInput').value = ''; renderNotes(); } });
+
+    const quotes = ['"KEEP GOING — YOU GOT THIS"','"SMALL STEPS EVERY DAY"','"DISCIPLINE BEATS MOTIVATION"','"FOCUS ON THE PROCESS"','"PROGRESS OVER PERFECTION"','"STAY CONSISTENT, STAY STRONG"','"YOU ARE CAPABLE OF AMAZING THINGS"'];
+    document.getElementById('newQuote')?.addEventListener('click', ()=>{ document.getElementById('quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]; });
+
+    document.getElementById('fbSend')?.addEventListener('click', ()=>{
+      const name = document.getElementById('fbName').value.trim();
+      const email = document.getElementById('fbEmail').value.trim();
+      const msg = document.getElementById('fbMsg').value.trim();
+      if(!msg) { alert('PLEASE WRITE YOUR FEEDBACK 💬'); return; }
+      let response = '🙏 THANK YOU';
+      if(name) response += `, ${name}`;
+      response += '! YOUR FEEDBACK HELPS US GROW.';
+      document.getElementById('fbThanks').innerText = response;
+      document.getElementById('fbName').value = '';
+      document.getElementById('fbEmail').value = '';
+      document.getElementById('fbMsg').value = '';
+      setTimeout(()=>{ document.getElementById('fbThanks').innerText = ''; }, 3000);
+    });
+
+    const subjectContainer = document.getElementById('subjectContainer');
+    const addSubjectBtn = document.getElementById('addSubjectBtn');
+    const generateBtn = document.getElementById('generateTimetableBtn');
+    const planSlots = document.getElementById('planSlots');
+    
+    let isAM = true;
+    const amBtn = document.getElementById('ampmAM');
+    const pmBtn = document.getElementById('ampmPM');
+    amBtn.addEventListener('click', () => { isAM = true; amBtn.classList.add('active'); pmBtn.classList.remove('active'); });
+    pmBtn.addEventListener('click', () => { isAM = false; amBtn.classList.remove('active'); pmBtn.classList.add('active'); });
+
+    function createSubjectRow(value = '') {
+      const row = document.createElement('div');
+      row.className = 'subject-row';
+      row.innerHTML = `<input type="text" placeholder="SUBJECT NAME" value="${escapeHtml(value)}"><button class="remove-btn">✖</button>`;
+      row.querySelector('.remove-btn').addEventListener('click', () => row.remove());
+      return row;
+    }
+    function initSubjects() {
+      subjectContainer.innerHTML = '';
+      ['MATHEMATICS', 'PHYSICS', 'LITERATURE'].forEach(s => subjectContainer.appendChild(createSubjectRow(s)));
+    }
+    initSubjects();
+    addSubjectBtn.addEventListener('click', () => subjectContainer.appendChild(createSubjectRow('')));
+
+    function formatTimeFromMinutes(minsSinceMidnight) {
+      let totalMin = minsSinceMidnight;
+      let hrs24 = Math.floor(totalMin / 60) % 24;
+      let mins = totalMin % 60;
+      let period = hrs24 >= 12 ? 'PM' : 'AM';
+      let hrs12 = hrs24 % 12;
+      if(hrs12 === 0) hrs12 = 12;
+      return `${hrs12}:${mins.toString().padStart(2,'0')} ${period}`;
+    }
+
+    generateBtn.addEventListener('click', () => {
+      const rows = document.querySelectorAll('#subjectContainer .subject-row input');
+      const subjects = [];
+      rows.forEach(inp => { if(inp.value.trim()) subjects.push(inp.value.trim()); });
+      if(subjects.length === 0) { alert('ADD AT LEAST ONE SUBJECT'); return; }
+      
+      let startHourInput = parseInt(document.getElementById('startHour').value, 10);
+      if(isNaN(startHourInput) || startHourInput < 1 || startHourInput > 12) startHourInput = 9;
+      let hour24 = isAM ? (startHourInput % 12) : ((startHourInput % 12) + 12);
+      if(isAM && startHourInput === 12) hour24 = 0;
+      if(!isAM && startHourInput === 12) hour24 = 12;
+      
+      let studyHoursVal = parseInt(document.getElementById('studyHours').value, 10) || 0;
+      let studyMinsVal = parseInt(document.getElementById('studyMinutes').value, 10) || 0;
+      let totalStudyMinutes = (studyHoursVal * 60) + studyMinsVal;
+      if(totalStudyMinutes <= 0) { alert('ENTER VALID STUDY DURATION'); return; }
+      
+      let breakMins = parseInt(document.getElementById('breakMinutes').value, 10);
+      if(isNaN(breakMins) || breakMins < 1) breakMins = 5;
+      let numberOfBreaks = subjects.length - 1;
+      let totalBreakTime = numberOfBreaks * breakMins;
+      
+      if(totalBreakTime >= totalStudyMinutes) {
+        alert(`⚠️ BREAKS (${totalBreakTime}min) exceed study time. Reduce break duration or increase study time.`);
+        return;
+      }
+      
+      const totalStudyForSubjects = totalStudyMinutes - totalBreakTime;
+      let perSubjectBase = Math.floor(totalStudyForSubjects / subjects.length);
+      let remainder = totalStudyForSubjects % subjects.length;
+      let currentMinutes = (hour24 * 60);
+      let html = '';
+      
+      for(let i=0; i<subjects.length; i++) {
+        let extra = i < remainder ? 1 : 0;
+        let duration = perSubjectBase + extra;
+        let startTime = formatTimeFromMinutes(currentMinutes);
+        let endTime = formatTimeFromMinutes(currentMinutes + duration);
+        html += `<div class="slot">
+          <span class="time-badge">${startTime} – ${endTime}</span>
+          <span class="subject-badge">📖 ${escapeHtml(subjects[i])}</span>
+        </div>`;
+        currentMinutes += duration;
+        if(i < subjects.length-1) {
+          let breakStart = formatTimeFromMinutes(currentMinutes);
+          let breakEnd = formatTimeFromMinutes(currentMinutes + breakMins);
+          html += `<div class="slot">
+            <span class="time-badge">${breakStart} – ${breakEnd}</span>
+            <span class="break-badge">☕ BREAK ${breakMins} MIN</span>
+          </div>`;
+          currentMinutes += breakMins;
+        }
+      }
+      planSlots.innerHTML = html;
+    });
+
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        navItems.forEach(n => n.classList.remove('active'));
+        this.classList.add('active');
+        const target = this.getAttribute('data-target');
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    
+    fullTaskRender(); updateStreakUI(); renderNotes();
+    document.getElementById('quoteBox').innerText = '"JUST START"';
+  })();
+</script>
+
+</body>
+</html>
