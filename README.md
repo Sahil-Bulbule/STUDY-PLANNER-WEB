@@ -13,7 +13,7 @@ A modern and responsive Study Planner web application built using HTML, CSS, and
 ## 🛠️ Tech Stack
 - HTML
 - CSS
-- JavaScript
+- JavaScript 
 
 ## 💡 How to Use
 1. Add your study task
