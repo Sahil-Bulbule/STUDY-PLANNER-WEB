@@ -17,7 +17,7 @@ A modern and responsive Study Planner web application built using HTML, CSS, and
 
 ## 💡 How to Use
 1. Add your study task
-2. Plan your schedule
+2. Plan your schedule 
 3. Track your progress
 4. Stay organized
 
