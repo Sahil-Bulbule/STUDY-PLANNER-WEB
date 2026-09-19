@@ -10,7 +10,7 @@ A modern and responsive Study Planner web application built using HTML, CSS, and
 - 🌙 Clean and simple UI
 - 📱 Responsive design   
   
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack 
 - HTML  
 - CSS
 - JavaScript 
