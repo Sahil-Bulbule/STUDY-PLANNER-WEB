@@ -8,7 +8,7 @@ A modern and responsive Study Planner web application built using HTML, CSS, and
 - ✅ Track task progress     
 - 🗂️ Organize tasks efficiently      
 - 🌙 Clean and simple UI        
-- 📱 Responsive design      
+- 📱 Responsive design       
    
 ## 🛠️ Tech Stack  
 - HTML  
