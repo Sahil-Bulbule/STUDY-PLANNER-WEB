@@ -5,7 +5,7 @@ A modern and responsive Study Planner web application built using HTML, CSS, and
 ## 🚀 Features
 - ➕ Add study tasks  
 - 📅 Plan daily/weekly schedule      
-- ✅ Track task progress     
+- ✅ Track task progress      
 - 🗂️ Organize tasks efficiently          
 - 🌙 Clean and simple UI           
 - 📱 Responsive design         
